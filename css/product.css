@@ -1,0 +1,23 @@
+#product {
+    flex: 1;
+    flex-direction: column;
+}
+
+#product-image {
+    flex: 1;
+    aspect-ratio: 1;
+}
+
+#product-title {
+    color: black;
+    font-weight: bold;
+}
+
+#product-subtitle {
+    color: #8e8e90;
+
+
+}#product-price {
+    color: black;
+    font-weight: bold;
+}
