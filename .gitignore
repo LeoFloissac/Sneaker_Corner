@@ -1,0 +1,5 @@
+# Ignorer tous les fichiers d'images sauf logo.png
+images/*
+
+# Réinclure logo.png partout
+!**/logo.png

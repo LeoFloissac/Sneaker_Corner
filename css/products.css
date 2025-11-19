@@ -1,5 +1,11 @@
-@import "main.css";
-
 main {
-    background-color: #f5f5f5;
+    background-color: #ffffff;
+    flex-direction: column;
+}
+
+#product-selection {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: space-evenly;
 }

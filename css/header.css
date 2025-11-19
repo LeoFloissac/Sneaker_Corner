@@ -4,7 +4,7 @@
     margin-right: 2rem;
 }
 #headerTitle {
-    font-size: 3rem;
+    font-size: clamp(0.2rem, 3vw, 3rem);
 }
 
 
@@ -71,3 +71,49 @@ footer {
     align-items: center;
 }
 
+
+#username {
+    position: relative;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background 0.2s;
+}
+
+#username:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+/* Dropdown Sign Out */
+#usernameDropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    min-width: 100px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    z-index: 10;
+}
+
+#usernameDropdown.show { display: block !important; }
+
+#usernameDropdown button {
+    width: 100%;
+    padding: 8px 12px;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+}
+
+#usernameDropdown button:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+#usernameContainer {
+    position: relative;
+    display: inline-block;
+}

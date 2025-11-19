@@ -1,11 +1,7 @@
 <!-- footer.php -->
-<!DOCTYPE html>
-<html>
-<head>
-<title>My First Website</title>
-<link rel="stylesheet" href="/my_website/css/header.css">
-</head>
-<body>
+<?php include __DIR__ . '/../auth/register.php'; ?>
+<?php include __DIR__ . '/../auth/login.php'; ?>
+
 <footer>
     <p>&copy; 2025 Web Programming</p>
 </footer>
