@@ -1,44 +1,224 @@
+/* ===== MODALS - NIKE STYLE ===== */
+
 .modal {
-  display: none; /*Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 .modal-content {
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+    background-color: var(--white);
+    margin: 8% auto;
+    padding: var(--spacing-xl);
+    border: none;
+    border-radius: var(--radius-lg);
+    width: 90%;
+    max-width: 450px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+    animation: modalSlideIn 0.3s ease;
 }
 
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.modal-content h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 0 0 var(--spacing-lg);
+    text-align: center;
+    color: var(--primary-black);
+}
+
+/* Close Button */
 .close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
+    color: var(--medium-gray);
+    float: right;
+    font-size: 28px;
+    font-weight: 300;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all var(--transition-fast);
+    margin: -10px -10px 0 0;
 }
 
 .close:hover,
 .close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
+    color: var(--primary-black);
+    background: var(--light-gray);
+    text-decoration: none;
+    cursor: pointer;
 }
 
+/* Form Inputs */
+input[type=text], 
+input[type=password],
+input[type=email] {
+    width: 100%;
+    padding: var(--spacing-md);
+    margin: var(--spacing-xs) 0 var(--spacing-md) 0;
+    display: block;
+    border: 2px solid var(--light-gray);
+    border-radius: var(--radius-md);
+    background: var(--white);
+    font-size: 1rem;
+    font-family: var(--font-primary);
+    transition: all var(--transition-fast);
+    box-sizing: border-box;
+}
 
-input[type=text], input[type=password] {
-  width: 80%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  display: inline-block;
-  border: none;
-  background: #f1f1f1;
+input[type=text]:focus, 
+input[type=password]:focus,
+input[type=email]:focus {
+    outline: none;
+    border-color: var(--primary-black);
+    box-shadow: 0 0 0 3px rgba(17, 17, 17, 0.1);
+}
+
+input[type=text]::placeholder, 
+input[type=password]::placeholder,
+input[type=email]::placeholder {
+    color: var(--medium-gray);
+}
+
+/* Labels */
+.modal-content label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--primary-black);
+    margin-bottom: var(--spacing-xs);
+}
+
+/* Submit Buttons */
+.modal-content button[type=submit],
+.btn-primary {
+    width: 100%;
+    padding: var(--spacing-md);
+    background: var(--primary-black);
+    color: var(--white);
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    margin-top: var(--spacing-sm);
+}
+
+.modal-content button[type=submit]:hover,
+.btn-primary:hover {
+    background: var(--dark-gray);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content button[type=submit]:active,
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+/* Secondary Buttons */
+.btn-secondary {
+    width: 100%;
+    padding: var(--spacing-md);
+    background: transparent;
+    color: var(--primary-black);
+    border: 2px solid var(--primary-black);
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.btn-secondary:hover {
+    background: var(--primary-black);
+    color: var(--white);
+}
+
+/* Form Links */
+.modal-content a {
+    color: var(--primary-black);
+    font-weight: 500;
+    text-decoration: underline;
+    transition: color var(--transition-fast);
+}
+
+.modal-content a:hover {
+    color: var(--medium-gray);
+}
+
+/* Form Footer */
+.modal-footer {
+    text-align: center;
+    margin-top: var(--spacing-lg);
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--light-gray);
+    font-size: 0.875rem;
+    color: var(--medium-gray);
+}
+
+/* Error Messages */
+.error-message {
+    background: #fff0f0;
+    color: #d32f2f;
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    font-size: 0.875rem;
+    margin-bottom: var(--spacing-md);
+    border-left: 3px solid #d32f2f;
+}
+
+/* Success Messages */
+.success-message {
+    background: #f0fff4;
+    color: #2e7d32;
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    font-size: 0.875rem;
+    margin-bottom: var(--spacing-md);
+    border-left: 3px solid #2e7d32;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .modal-content {
+        margin: 5% auto;
+        padding: var(--spacing-lg);
+        width: 95%;
+    }
 }

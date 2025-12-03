@@ -1,4 +1,4 @@
-<?php include '../app/partials/header.php'; ?>
+<?php include '../app/views/partials/header.php'; ?>
 <div id="header"></div>
 
 <main>
@@ -6,4 +6,4 @@
     <p>Ceci est la page d'accueil.</p>
 </main>
 
-<?php include '../app/partials/footer.php'; ?>
+<?php include '../app/views/partials/footer.php'; ?>

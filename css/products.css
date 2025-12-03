@@ -1,11 +1,97 @@
-main {
-    background-color: #ffffff;
-    flex-direction: column;
+/* ===== PRODUCTS PAGE - NIKE STYLE GRID ===== */
+
+main.products-page {
+    background-color: var(--white);
+    padding-top: var(--spacing-lg);
 }
 
+main h1 {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    position: relative;
+}
+
+main h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--primary-black);
+}
+
+/* Product Grid */
 #product-selection {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    padding: var(--spacing-lg) var(--spacing-xl);
+    max-width: 1600px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Filters Bar (future enhancement) */
+.filters-bar {
     display: flex;
-    flex: 1;
-    flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-md) var(--spacing-xl);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: var(--spacing-md);
+}
+
+.filters-bar h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.result-count {
+    color: var(--medium-gray);
+    font-size: 0.875rem;
+}
+
+/* Empty State */
+.empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: var(--spacing-xxl);
+    color: var(--medium-gray);
+}
+
+.empty-state p {
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-md);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+    #product-selection {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: var(--spacing-md);
+        padding: var(--spacing-md);
+    }
+}
+
+@media (max-width: 768px) {
+    #product-selection {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-sm);
+        padding: var(--spacing-sm);
+    }
+    
+    main h1 {
+        font-size: 1.75rem;
+        padding: 0 var(--spacing-sm);
+    }
+}
+
+@media (max-width: 480px) {
+    #product-selection {
+        grid-template-columns: 1fr;
+        padding: var(--spacing-sm);
+    }
 }

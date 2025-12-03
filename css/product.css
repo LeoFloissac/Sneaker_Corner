@@ -1,34 +1,91 @@
+/* ===== PRODUCT CARD - NIKE STYLE ===== */
+
 .product {
     display: flex;
-    flex: 1 1;
     flex-direction: column;
-    justify-content: flex-start;
+    background: var(--light-gray);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+}
+
+.product:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* Product Image Container */
+.image-frame {
+    aspect-ratio: 1;
+    display: flex;
     align-items: center;
-    text-align: left;
+    justify-content: center;
+    background: var(--light-gray);
+    overflow: hidden;
+    padding: 1rem;
 }
 
 .product-image {
-    width: 20em;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    transition: transform var(--transition-slow);
 }
 
-.image-frame {
-    aspect-ratio: 1;
-    display: flex;            /* centrer le contenu */
-    align-items: center;      /* centre verticalement */
-    justify-content: center;
+.product:hover .product-image {
+    transform: scale(1.05);
 }
 
+/* Product Info */
 .product-title-price {
-    font-size: 1rem;
-    width: 80%;
-    color: black;
-    font-weight: bold;
-    margin: 0.15rem; 
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--primary-black);
+    margin: 0;
+    padding: 0.75rem 1rem 0.25rem;
+    line-height: 1.4;
+    background: var(--white);
+}
+
+.product-title-price:last-of-type {
+    font-weight: 700;
+    padding: 0.25rem 1rem 1rem;
 }
 
 .product-subtitle {
-    font-size: 1rem;
-    width: 80%;
-    color: #8e8e90;
-    margin: 0.15rem;
+    font-size: 0.85rem;
+    color: var(--medium-gray);
+    margin: 0;
+    padding: 0 1rem 0.25rem;
+    font-weight: 400;
+    background: var(--white);
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+    .product:hover {
+        transform: none;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+    
+    .product-title-price {
+        font-size: 0.85rem;
+        padding: 0.5rem 0.75rem 0.2rem;
+    }
+    
+    .product-subtitle {
+        font-size: 0.75rem;
+        padding: 0 0.75rem 0.2rem;
+    }
+    
+    .product-title-price:last-of-type {
+        padding: 0.2rem 0.75rem 0.75rem;
+    }
+    
+    .image-frame {
+        padding: 0.5rem;
+    }
 }
