@@ -22,15 +22,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['form_type']) && $_POS
         if (password_verify($password, $hashedPassword)) {
             $_SESSION['user_id'] = $id;
             $_SESSION['name'] = $name;
-            $message = "✅ Connecté en tant que $name";
+            $message = "Connecté en tant que $name";
             session_regenerate_id(true);
             header('Location: /my_website/public/index.php');
             exit;
         } else {
-            $message = "❌ Mot de passe incorrect";
+            $message = "Mot de passe incorrect";
         }
     } else {
-        $message = "❌ Email non trouvé";
+        $message = "Email non trouvé";
     }
 
     $stmt->close();
@@ -50,6 +50,9 @@ $conn->close();
             <label for="password">Password</label><br>
             <input type="password" id="password" name="password" required><br>
             <button type="submit" class="loginBtn">Login</button>
-        </form>    
+        </form>   
+        <div id="forgottenPassword">
+            <button id="openForgotPassword">Forgot Password</button>
+        </div>
     </div>
 </div>

@@ -6,6 +6,9 @@ document.addEventListener('DOMContentLoaded', function() {
     var loginModal = document.getElementById("loginModal");
     var openLoginBtn = document.getElementById("openLoginBtn");
     var closeLoginBtn = document.getElementById("closeLogin");
+    var forgotModal = document.getElementById("forgotModal")
+    var openForgotBtn = document.getElementById("openForgotPassword");
+    var closeForgotBtn = document.getElementById("closeForgot");
 
     if (openRegisterBtn && openLoginBtn) {
         openRegisterBtn.onclick = () => registerModal.style.display = "block";
@@ -13,7 +16,11 @@ document.addEventListener('DOMContentLoaded', function() {
         openLoginBtn.onclick = () => loginModal.style.display = "block";
         closeLoginBtn.onclick = () => loginModal.style.display = "none";
     }
-
+    
+    if (openForgotBtn) {
+        openForgotBtn.onclick = () => {loginModal.style.display = "none"; forgotModal.style.display = "block";}
+        closeForgotBtn.onclick = () => forgotModal.style.display = "none";
+    }
     // --- PARTIE 2 : Dropdown username ---
     const username = document.getElementById('usernameContainer');
     const dropdown = document.getElementById('usernameDropdown');
