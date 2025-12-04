@@ -1,4 +1,5 @@
 /* ===== MODALS - NIKE STYLE ===== */
+/* Note: Uses variables from main.css */
 
 .modal {
     display: none;
@@ -12,34 +13,35 @@
     background-color: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
-    animation: modalFadeIn 0.3s ease;
+    animation: modalFadeIn 0.2s ease;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal[style*="block"] {
+    display: flex !important;
 }
 
 @keyframes modalFadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 .modal-content {
     background-color: var(--white);
-    margin: 8% auto;
-    padding: var(--spacing-xl);
+    padding: var(--spacing-lg);
     border: none;
     border-radius: var(--radius-lg);
     width: 90%;
-    max-width: 450px;
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
-    animation: modalSlideIn 0.3s ease;
+    max-width: 420px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    animation: modalSlideIn 0.25s ease;
 }
 
 @keyframes modalSlideIn {
     from {
         opacity: 0;
-        transform: translateY(-30px) scale(0.95);
+        transform: translateY(-20px) scale(0.98);
     }
     to {
         opacity: 1;
@@ -48,9 +50,9 @@
 }
 
 .modal-content h2 {
-    font-size: 1.75rem;
+    font-size: 1.4rem;
     font-weight: 700;
-    margin: 0 0 var(--spacing-lg);
+    margin: 0 0 var(--spacing-sm);
     text-align: center;
     color: var(--primary-black);
 }
@@ -59,24 +61,22 @@
 .close {
     color: var(--medium-gray);
     float: right;
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 300;
-    width: 36px;
-    height: 36px;
+    width: 32px;
+    height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
     transition: all var(--transition-fast);
-    margin: -10px -10px 0 0;
+    margin: -0.5rem -0.5rem 0 0;
+    cursor: pointer;
 }
 
-.close:hover,
-.close:focus {
+.close:hover {
     color: var(--primary-black);
     background: var(--light-gray);
-    text-decoration: none;
-    cursor: pointer;
 }
 
 /* Form Inputs */
@@ -84,14 +84,13 @@ input[type=text],
 input[type=password],
 input[type=email] {
     width: 100%;
-    padding: var(--spacing-md);
-    margin: var(--spacing-xs) 0 var(--spacing-md) 0;
+    padding: 0.75rem 1rem;
+    margin: 0.25rem 0 0.75rem 0;
     display: block;
-    border: 2px solid var(--light-gray);
+    border: 1px solid #e5e5e5;
     border-radius: var(--radius-md);
     background: var(--white);
-    font-size: 1rem;
-    font-family: var(--font-primary);
+    font-size: 0.95rem;
     transition: all var(--transition-fast);
     box-sizing: border-box;
 }
@@ -101,73 +100,117 @@ input[type=password]:focus,
 input[type=email]:focus {
     outline: none;
     border-color: var(--primary-black);
-    box-shadow: 0 0 0 3px rgba(17, 17, 17, 0.1);
+    box-shadow: 0 0 0 2px rgba(17, 17, 17, 0.1);
 }
 
 input[type=text]::placeholder, 
 input[type=password]::placeholder,
 input[type=email]::placeholder {
-    color: var(--medium-gray);
+    color: #999;
 }
 
 /* Labels */
 .modal-content label {
     display: block;
-    font-size: 0.875rem;
+    font-size: 0.8rem;
     font-weight: 600;
     color: var(--primary-black);
-    margin-bottom: var(--spacing-xs);
+    margin-bottom: 0.2rem;
 }
 
 /* Submit Buttons */
 .modal-content button[type=submit],
-.btn-primary {
+.modal .btn-primary {
     width: 100%;
-    padding: var(--spacing-md);
+    padding: 0.8rem;
     background: var(--primary-black);
     color: var(--white);
     border: none;
-    border-radius: 30px;
-    font-size: 1rem;
+    border-radius: 25px;
+    font-size: 0.9rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.03em;
     cursor: pointer;
     transition: all var(--transition-fast);
-    margin-top: var(--spacing-sm);
+    margin-top: var(--spacing-xs);
 }
 
 .modal-content button[type=submit]:hover,
-.btn-primary:hover {
+.modal .btn-primary:hover {
     background: var(--dark-gray);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-.modal-content button[type=submit]:active,
-.btn-primary:active {
-    transform: translateY(0);
 }
 
 /* Secondary Buttons */
-.btn-secondary {
+.modal .btn-secondary {
     width: 100%;
-    padding: var(--spacing-md);
+    padding: 0.8rem;
     background: transparent;
     color: var(--primary-black);
-    border: 2px solid var(--primary-black);
-    border-radius: 30px;
-    font-size: 1rem;
+    border: 1px solid var(--primary-black);
+    border-radius: 25px;
+    font-size: 0.9rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.03em;
     cursor: pointer;
     transition: all var(--transition-fast);
 }
 
-.btn-secondary:hover {
+.modal .btn-secondary:hover {
     background: var(--primary-black);
     color: var(--white);
+}
+
+/* Divider */
+.divider {
+    display: flex;
+    align-items: center;
+    margin: var(--spacing-sm) 0;
+    color: #999;
+    font-size: 0.8rem;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #e5e5e5;
+}
+
+.divider span {
+    padding: 0 0.75rem;
+}
+
+/* Social Login Buttons */
+.btn-social {
+    width: 100%;
+    padding: 0.7rem;
+    background: var(--white);
+    color: var(--primary-black);
+    border: 1px solid #e5e5e5;
+    border-radius: 25px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-xs);
+}
+
+.btn-social:hover {
+    background: var(--light-gray);
+    border-color: #ccc;
+}
+
+.btn-social svg,
+.btn-social img {
+    width: 18px;
+    height: 18px;
 }
 
 /* Form Links */
@@ -175,7 +218,7 @@ input[type=email]::placeholder {
     color: var(--primary-black);
     font-weight: 500;
     text-decoration: underline;
-    transition: color var(--transition-fast);
+    font-size: 0.85rem;
 }
 
 .modal-content a:hover {
@@ -185,40 +228,54 @@ input[type=email]::placeholder {
 /* Form Footer */
 .modal-footer {
     text-align: center;
-    margin-top: var(--spacing-lg);
-    padding-top: var(--spacing-lg);
-    border-top: 1px solid var(--light-gray);
-    font-size: 0.875rem;
+    margin-top: var(--spacing-sm);
+    padding-top: var(--spacing-sm);
+    border-top: 1px solid #f0f0f0;
+    font-size: 0.8rem;
     color: var(--medium-gray);
+}
+
+/* Forgot Password Link */
+.forgot-link {
+    display: block;
+    text-align: right;
+    margin-top: -0.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.8rem;
 }
 
 /* Error Messages */
 .error-message {
     background: #fff0f0;
     color: #d32f2f;
-    padding: var(--spacing-sm);
-    border-radius: var(--radius-sm);
-    font-size: 0.875rem;
-    margin-bottom: var(--spacing-md);
+    padding: var(--spacing-xs) 0.75rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    margin-bottom: 0.75rem;
     border-left: 3px solid #d32f2f;
 }
 
 /* Success Messages */
 .success-message {
     background: #f0fff4;
-    color: #2e7d32;
-    padding: var(--spacing-sm);
-    border-radius: var(--radius-sm);
-    font-size: 0.875rem;
-    margin-bottom: var(--spacing-md);
-    border-left: 3px solid #2e7d32;
+    color: var(--accent-green);
+    padding: var(--spacing-xs) 0.75rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    margin-bottom: 0.75rem;
+    border-left: 3px solid var(--accent-green);
 }
 
 /* Mobile */
-@media (max-width: 768px) {
+@media (max-width: 480px) {
     .modal-content {
-        margin: 5% auto;
-        padding: var(--spacing-lg);
-        width: 95%;
+        padding: var(--spacing-md);
+        width: 94%;
+        max-width: none;
+        margin: var(--spacing-sm);
+    }
+    
+    .modal-content h2 {
+        font-size: 1.25rem;
     }
 }

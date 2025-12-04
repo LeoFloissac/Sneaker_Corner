@@ -12,13 +12,13 @@ class AuthController {
     }
     
     /**
-     * Connexion utilisateur
+     * User Login
      */
     public function login($email, $password) {
         $result = ['success' => false, 'message' => ''];
         
         if (empty($email) || empty($password)) {
-            $result['message'] = "Veuillez remplir tous les champs";
+            $result['message'] = "Please fill in all fields";
             return $result;
         }
         
@@ -30,14 +30,14 @@ class AuthController {
             session_regenerate_id(true);
             
             $result['success'] = true;
-            $result['message'] = "Connecté en tant que " . $user['name'];
+            $result['message'] = "Logged in as " . $user['name'];
             $result['user'] = $user;
         } else {
-            // Vérifier si l'email existe
+            // Check if email exists
             if ($this->userModel->emailExists($email)) {
-                $result['message'] = "Mot de passe incorrect";
+                $result['message'] = "Incorrect password";
             } else {
-                $result['message'] = "Email non trouvé";
+                $result['message'] = "Email not found";
             }
         }
         
@@ -45,53 +45,53 @@ class AuthController {
     }
     
     /**
-     * Inscription utilisateur
+     * User Registration
      */
     public function register($name, $email, $password, $confirmPassword) {
         $result = ['success' => false, 'message' => ''];
         
         // Validation
         if (empty($name) || empty($email) || empty($password)) {
-            $result['message'] = "Veuillez remplir tous les champs";
+            $result['message'] = "Please fill in all fields";
             return $result;
         }
         
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $result['message'] = "Email invalide";
+            $result['message'] = "Invalid email address";
             return $result;
         }
         
         if (strlen($password) < 6) {
-            $result['message'] = "Le mot de passe doit contenir au moins 6 caractères";
+            $result['message'] = "Password must be at least 6 characters";
             return $result;
         }
         
         if ($password !== $confirmPassword) {
-            $result['message'] = "Les mots de passe ne correspondent pas";
+            $result['message'] = "Passwords do not match";
             return $result;
         }
         
         if ($this->userModel->emailExists($email)) {
-            $result['message'] = "Cet email est déjà utilisé";
+            $result['message'] = "This email is already in use";
             return $result;
         }
         
-        // Création
+        // Create user
         $userId = $this->userModel->create($name, $email, $password);
         
         if ($userId) {
             $result['success'] = true;
-            $result['message'] = "Inscription réussie ! Vous pouvez vous connecter.";
+            $result['message'] = "Registration successful! You can now log in.";
             $result['user_id'] = $userId;
         } else {
-            $result['message'] = "Erreur lors de l'inscription";
+            $result['message'] = "An error occurred during registration";
         }
         
         return $result;
     }
     
     /**
-     * Déconnexion
+     * Logout
      */
     public function logout() {
         $_SESSION = [];
@@ -106,37 +106,38 @@ class AuthController {
         
         session_destroy();
         
-        return ['success' => true, 'message' => 'Déconnexion réussie'];
+        return ['success' => true, 'message' => 'Successfully logged out'];
     }
     
     /**
-     * Mot de passe oublié
+     * Forgot Password
+     * Note: Email sending is not implemented
      */
     public function forgotPassword($email) {
         $result = ['success' => false, 'message' => ''];
         
         if (empty($email)) {
-            $result['message'] = "Veuillez entrer votre email";
+            $result['message'] = "Please enter your email";
             return $result;
         }
         
-        // Ici tu pourrais générer un token et envoyer un email
-        // Pour l'instant on simule juste le succès
+        // Note: Password reset via email is not implemented
+        // This just simulates success for demo purposes
         $result['success'] = true;
-        $result['message'] = "Si cet email existe, vous recevrez un lien de réinitialisation.";
+        $result['message'] = "If this email exists, you would receive a reset link.";
         
         return $result;
     }
     
     /**
-     * Vérifier si l'utilisateur est connecté
+     * Check if user is logged in
      */
     public function isLoggedIn() {
         return isset($_SESSION['user_id']);
     }
     
     /**
-     * Récupérer l'utilisateur connecté
+     * Get current logged in user
      */
     public function getCurrentUser() {
         if ($this->isLoggedIn()) {

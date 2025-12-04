@@ -1,0 +1,203 @@
+/* ===== CONTACT PAGE SPECIFIC STYLES ===== */
+/* Note: Uses common classes from pages-common.css */
+
+/* ===== CONTACT CONTAINER ===== */
+.contact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-xxl) var(--spacing-xl);
+}
+
+/* ===== CONTACT GRID ===== */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xxl);
+}
+
+/* ===== CONTACT FORM ===== */
+.contact-form-section h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 var(--spacing-sm);
+    color: var(--primary-black);
+}
+
+.contact-form-section > p {
+    color: var(--medium-gray);
+    margin: 0 0 var(--spacing-lg);
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.btn-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    padding: 16px 32px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: inherit;
+    background: var(--primary-black);
+    color: var(--white);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    margin-top: var(--spacing-sm);
+}
+
+.btn-submit:hover {
+    background: var(--dark-gray);
+    transform: translateY(-2px);
+}
+
+.btn-submit svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* ===== CONTACT INFO ===== */
+.contact-info-section h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 var(--spacing-lg);
+    color: var(--primary-black);
+}
+
+.contact-info-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.contact-info-item {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.contact-info-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--light-gray);
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.contact-info-icon svg {
+    width: 24px;
+    height: 24px;
+    color: var(--primary-black);
+}
+
+.contact-info-content h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 var(--spacing-xs);
+    color: var(--primary-black);
+}
+
+.contact-info-content p {
+    font-size: 0.9375rem;
+    color: var(--medium-gray);
+    margin: 0;
+    line-height: 1.6;
+}
+
+.contact-info-content a {
+    color: var(--primary-black);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.contact-info-content a:hover {
+    color: var(--accent-red);
+    text-decoration: underline;
+}
+
+/* ===== FAQ SECTION ===== */
+.contact-faq {
+    background: var(--light-gray);
+    padding: var(--spacing-xxl) var(--spacing-xl);
+}
+
+.contact-faq h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin: 0 0 var(--spacing-xl);
+    color: var(--primary-black);
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background: var(--white);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+}
+
+.faq-item h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 var(--spacing-sm);
+    color: var(--primary-black);
+}
+
+.faq-item p {
+    font-size: 0.9375rem;
+    color: var(--medium-gray);
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 992px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xl);
+    }
+    
+    .contact-info-section {
+        order: -1;
+    }
+    
+    .contact-container {
+        padding: var(--spacing-xl) var(--spacing-md);
+    }
+}
+
+@media (max-width: 768px) {
+    .faq-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-faq {
+        padding: var(--spacing-xl) var(--spacing-md);
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-info-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .contact-info-icon {
+        margin: 0 auto;
+    }
+}

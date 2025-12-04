@@ -14,24 +14,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['form_type']) && $_POS
 }
 ?>
 
-<div id="forgotPasswordModal" class="modal">
+<div id="forgotModal" class="modal">
     <div class="modal-content">
-        <span class="close" id="closeForgotPassword">&times;</span>
-        <h1>Forgot Password</h1>
+        <span class="close" id="closeForgot">&times;</span>
+        <h2>Forgot Password</h2>
         
         <?php if ($message): ?>
             <div class="message <?= $messageType ?>"><?= htmlspecialchars($message) ?></div>
         <?php endif; ?>
         
+        <p style="color: #707072; font-size: 0.9rem; margin-bottom: 1rem;">Enter your email address and we'll send you a link to reset your password.</p>
+        
         <form method="POST">
             <input type="hidden" name="form_type" value="forgot_password">
-            <label for="email">Email</label><br>
-            <input type="email" id="email" name="email" required><br>
+            <label for="forgot_email">Email</label>
+            <input type="email" id="forgot_email" name="email" placeholder="your@email.com" required>
             <button type="submit" class="forgotBtn">Reset Password</button>
         </form>
         
-        <div id="backToLogin">
-            <button id="openLogin">Back to Login</button>
+        <div class="modal-footer">
+            <a href="#" id="backToLogin">Back to Login</a>
         </div>
     </div>
 </div>

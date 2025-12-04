@@ -75,6 +75,25 @@ CREATE TABLE IF NOT EXISTS variant_images (
     INDEX idx_primary (is_primary)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- Table: stores
+CREATE TABLE IF NOT EXISTS stores (
+    store_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    address VARCHAR(500) NOT NULL,
+    city VARCHAR(100) NOT NULL,
+    postal_code VARCHAR(20),
+    country VARCHAR(100) DEFAULT 'Vietnam',
+    phone VARCHAR(50),
+    email VARCHAR(255),
+    latitude DECIMAL(10, 8),
+    longitude DECIMAL(11, 8),
+    opening_hours VARCHAR(500),
+    is_active TINYINT(1) DEFAULT 1,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    INDEX idx_city (city),
+    INDEX idx_active (is_active)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 -- Table: store_inventory
 CREATE TABLE IF NOT EXISTS store_inventory (
     inventory_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -83,9 +102,32 @@ CREATE TABLE IF NOT EXISTS store_inventory (
     size_id INT NOT NULL,
     quantity INT DEFAULT 0,
     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (store_id) REFERENCES stores(store_id) ON DELETE CASCADE,
     FOREIGN KEY (variant_id) REFERENCES product_variants(variant_id) ON DELETE CASCADE,
     FOREIGN KEY (size_id) REFERENCES variant_sizes(size_id) ON DELETE CASCADE,
     INDEX idx_store (store_id),
     INDEX idx_variant (variant_id),
     UNIQUE KEY unique_store_variant_size (store_id, variant_id, size_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Table: categories
+CREATE TABLE IF NOT EXISTS categories (
+    category_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    slug VARCHAR(100) NOT NULL UNIQUE,
+    parent_id INT NULL,
+    description TEXT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (parent_id) REFERENCES categories(category_id) ON DELETE SET NULL,
+    INDEX idx_slug (slug),
+    INDEX idx_parent (parent_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Table: product_categories (liaison produits-catégories)
+CREATE TABLE IF NOT EXISTS product_categories (
+    product_id INT NOT NULL,
+    category_id INT NOT NULL,
+    PRIMARY KEY (product_id, category_id),
+    FOREIGN KEY (product_id) REFERENCES products(product_id) ON DELETE CASCADE,
+    FOREIGN KEY (category_id) REFERENCES categories(category_id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

@@ -1,7 +1,6 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+// Include auth handler BEFORE any HTML output to handle form submissions and redirects
+require_once __DIR__ . '/auth_handler.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -12,6 +11,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <link rel="stylesheet" href="/sneaker_corner/css/main.css">
     <link rel="stylesheet" href="/sneaker_corner/css/header.css">
     <link rel="stylesheet" href="/sneaker_corner/css/modals.css">
+    <link rel="stylesheet" href="/sneaker_corner/css/pages-common.css">
     <script src="/sneaker_corner/js/modals.js"></script>
     <?php if (!empty($extraCSS)): ?>
         <?php foreach ($extraCSS as $css): ?>
